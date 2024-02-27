@@ -3,27 +3,28 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  # get 'comics/index'
-  # get 'comics/show'
-  # get 'comics/create'
-  # get 'comics/edit'
-  # get 'comics/update'
-  # get 'comics/destroy'
-  resources :comics do
-    resources :bookings, only: [ :new, :create ]
-  end
+  get "index", to: "comics#index"
+  get "show", to: "comics#show"
+  get "create", to: "comics#create"
+  get "edit", to: "comics#edit"
+  get "update", to: "comics#update"
+  get "destroy", to: "comics#destroy"
 
-  # get 'profiles/update'
-  # get 'profiles/destroy'
-  resources :profiles, only: [ :update, :destroy ]
+  # resources :comics do
+  #   resources :bookings, only: [ :new, :create ]
+  # end
 
-  # get 'bookings/index'
-  # get 'bookings/show'
-  # get 'bookings/create'
-  # get 'bookings/edit'
-  # get 'bookings/update'
-  # get 'bookings/destroy'
-  resources :bookings, only: [ :show ]
+  get 'profiles/update'
+  get 'profiles/destroy'
+  # resources :profiles, only: [ :update ]
+
+  get 'bookings/index'
+  get 'bookings/show'
+  get 'bookings/create'
+  get 'bookings/edit'
+  get 'bookings/update'
+  get 'bookings/destroy'
+  # resources :bookings, only: [ :show ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

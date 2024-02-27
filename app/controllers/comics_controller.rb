@@ -1,6 +1,6 @@
 class ComicsController < ApplicationController
   # skip_before_action
-  before_action set_comic, only: %i[ show edit update destroy ]
+  # before_action set_comic, only: %i[ show edit update destroy ]
 
   def index
     @comics = Comic.all

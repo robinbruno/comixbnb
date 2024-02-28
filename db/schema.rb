@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_26_144927) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_28_095841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "comic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comic_id"], name: "index_bookings_on_comic_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "comics", force: :cascade do |t|
+    t.string "genre"
+    t.string "title"
+    t.string "author"
+    t.date "published_in"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "pickable"
+    t.boolean "availability", default: true
+    t.index ["user_id"], name: "index_comics_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +47,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_144927) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.text "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "comics"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "comics", "users"
 end

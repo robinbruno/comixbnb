@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comic Details</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="container">
+    <h1><%= @comic.title %></h1>
+    <p><strong>Author:</strong> <%= @comic.author %></p>
+    <p><strong>Genre:</strong> <%= @comic.genre %></p>
+    <p><strong>Published in:</strong> <%= @comic.published_in %></p>
+  </div>
+</body>
+</html>

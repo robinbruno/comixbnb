@@ -1,4 +1,3 @@
-
 puts "db Comic is dead"
 Comic.destroy_all
 

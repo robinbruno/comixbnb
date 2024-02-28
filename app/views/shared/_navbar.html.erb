@@ -1,0 +1,64 @@
+<div class="toggling" data-controller="toggle">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <%= link_to "#", class: "navbar-brand" do %>
+        <%= image_tag "https://res.cloudinary.com/dlmpwvjpw/image/upload/v1709035117/ComixBnB/comixbnb_logo.png", style: "width: 125px; height: auto" %>
+      <% end %>
+
+      <div  class="btn-group rounded-lg mt-6" role="group" aria-label="Basic browsing toggle button group">
+        <input type="genre" class="btn-check rounded-lg" name="btnheader" id="btngenre" autocomplete="off" checked>
+        <label data-action="click->toggle#fire" class="btn btn-outline-secondary" for="btngenre">Search a comic</label>
+
+        <%# <input type="series" class="btn-check rounded-lg" name="btnheader" id="btnseries" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btnseries">Series</label>
+
+        <input type="near" class="btn-check rounded-lg" name="btnheader" id="btnnear" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btnnear">Near you</label> %>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Home", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Messages", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "ComixBnB", class: "avatar", alt: "dropdown menu" %>
+            </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Action", "#", class: "dropdown-item" %>
+                <%= link_to "Another action", "#", class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <%= simple_form_for :search, method: :get do |f| %>
+      <div class="search-bar">
+        <div class="flex-container_search d-none" data-toggle-target="togglableElement">
+          <%= f.input :title, label: false, input_html: { placeholder: "Title?" , class: "flex-item" } %>
+          <%= f.input :from, as: :date, label: false, input_html: { placeholder: "From..." , class: "flex-item" } %>
+          <%= f.input :to, as: :date, label: false, input_html: { placeholder: "To..." , class: "flex-item" } %>
+          <%= f.input :pickable, as: :boolean, label: "Pickable?", inline_label: true, class: "flex-item" %>
+          <%= f.button :submit, "Search", class: "btn btn-outline-secondary flex-item" %>
+        </div>
+      </div>
+    <% end %>
+</div>
+<div>

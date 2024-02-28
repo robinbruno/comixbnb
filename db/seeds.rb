@@ -1,8 +1,13 @@
+require 'faker'
+
 puts "db Comic is dead"
 Comic.destroy_all
 
 puts "db Booking is dead"
 Booking.destroy_all
+
+puts "db Comic is dead"
+Comic.destroy_all
 
 puts "db User is dead"
 User.destroy_all
@@ -18,12 +23,42 @@ puts "Finished!"
 
 puts "Creating the db with comic seeds..."
 
-Comic.create!(title: "Garfield At Large: His First Book", author: "Jim Davis ", genre: "Humor", published_in: "10/03/1980", user: User.last)
-Comic.create(title: "Watchmen", author: "Alan Moore", genre: "Comics, Graphic novel, Novel, Superhero fiction, Fantasy Fiction", published_in: "10/03/1986", user: User.last)
-Comic.create(title: "Dog Man and Cat Kid", author: "Dav Pilkey", genre: "Comics, Graphic novel, Fiction, Humor", published_in: "10/03/2017", user: User.last)
-Comic.create(title: "Asterix and Cleopatra", author: "René Goscinny", genre: "Humor", published_in: "10/03/1965", user: User.last)
-Comic.create(title: " ", author: "Hergé", genre: "Comics, Graphic novel", published_in: "10/03/1935", user: User.first)
-Comic.create(title: "Persepolis 1: The Story of a Childhood", author: "Marjane Satrapi", genre: "Graphic novel, autobiography", published_in: "10/03/2000", user: User.first)
+Comic.create!(poster:"https://m.media-amazon.com/images/I/71MLhZomM2L._AC_UY218_.jpg", title: "Garfield At Large: His First Book", author: "Jim Davis ", genre: "Humor", published_in: "10/03/1980", user: User.last)
+Comic.create(poster:"https://m.media-amazon.com/images/I/81nqASLZU5L._AC_UY218_.jpg", title: "Watchmen", author: "Alan Moore", genre: "Comics, Graphic novel, Novel, Superhero fiction, Fantasy Fiction", published_in: "10/03/1986", user: User.last)
+Comic.create(poster:"https://m.media-amazon.com/images/I/81+qHE9+S9L._AC_UY218_.jpg", title: "Dog Man and Cat Kid", author: "Dav Pilkey", genre: "Comics, Graphic novel, Fiction, Humor", published_in: "10/03/2017", user: User.last)
+Comic.create(poster:"https://m.media-amazon.com/images/I/71T6oHHGePL._AC_UY218_.jpg", title: "Asterix and Cleopatra", author: "René Goscinny", genre: "Humor", published_in: "10/03/1965", user: User.last)
+Comic.create(poster:"https://m.media-amazon.com/images/I/71fnC6maWCL._AC_UY218_.jpg", title: "The Blue Lotus", author: "Hergé", genre: "Comics, Graphic novel", published_in: "10/03/1935", user: User.first)
+Comic.create(poster:"https://m.media-amazon.com/images/I/616jH1RqmqL._AC_UY218_.jpg", title: "Persepolis 1: The Story of a Childhood", author: "Marjane Satrapi", genre: "Graphic novel, autobiography", published_in: "10/03/2000", user: User.first)
+Comic.create!(
+  poster:"https://m.media-amazon.com/images/I/714NezY7m3L._AC_UY218_.jpg",
+  title: "Bone",
+  author: "Jeff Smith",
+  genre: "Comics, Graphic novel, Fantasy",
+  published_in: "1991-07-01",
+  user: User.last
+)
+
+Comic.create!(
+  poster:"https://m.media-amazon.com/images/I/71qsDiT8ioL._AC_UY218_.jpg",
+  title: "Saga",
+  author: "Brian K. Vaughan",
+  genre: "Comics, Science fiction, Fantasy",
+  published_in: "2012-03-14",
+  user: User.last
+)
+
+# Generate more random comic seeds
+20.times do
+  Comic.create!(
+    poster: "https://m.media-amazon.com/images/I/71qsDiT8ioL._AC_UY218_.jpg",
+    title: Faker::Book.title,
+    author: Faker::Book.author,
+    genre: Faker::Book.genre,
+    published_in: Faker::Date.backward(days: 365 * 50),
+    user: User.last
+  )
+end
+
 puts "#{Comic.count} comics in database"
 
 puts "Creating the db with booking seeds..."

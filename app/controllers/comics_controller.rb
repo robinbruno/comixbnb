@@ -1,12 +1,13 @@
 class ComicsController < ApplicationController
   # skip_before_action
-  # before_action set_comic, only: %i[ show edit update destroy ]
+  before_action :set_comic, only: %i[ show edit update destroy ]
 
   def index
     @comics = Comic.all
   end
 
   def show
+
   end
 
   def new
@@ -18,6 +19,7 @@ class ComicsController < ApplicationController
 
   def create
     @comic = Comic.new(comic_params)
+    @comic.user = current_user
     if @comic.save
       redirect_to @comic, notice: "Comic was successfully created."
     else
@@ -44,6 +46,6 @@ class ComicsController < ApplicationController
   end
 
   def comic_params
-    params.require(:comic).permit(:title, :author, :genre)
+    params.require(:comic).permit(:title, :author, :genre, :user_id)
   end
 end

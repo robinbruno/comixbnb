@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
 comic.create(title: "Garfield At Large: His First Book", author: "Jim Davis ", genre: "Humor", published_in: 1980, user_id: 1)
 comic.create(title: "Watchmen", author: "Alan Moore", genre: "Comics, Graphic novel, Novel, Superhero fiction, Fantasy Fiction", published_in: 1986, user_id: 2)
 comic.create(title: "Dog Man and Cat Kid", author: "Dav Pilkey", genre: "Comics, Graphic novel, Fiction, Humor", published_in: 2017, user_id: 3)

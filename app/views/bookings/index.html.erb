@@ -2,7 +2,7 @@
 <ul>
   <% @bookings.each do |booking| %>
     <li>
-      <%= booking.flat.title %> - <%= booking.start_date %> to <%= booking.end_date %>
+      <%= booking.comic.title %> - <%= booking.start_date %> to <%= booking.end_date %>
     </li>
   <% end %>
 </ul>

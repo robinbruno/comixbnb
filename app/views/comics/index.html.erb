@@ -1,2 +1,17 @@
-<h1>Comics#index</h1>
-<p>Find me in app/views/comics/index.html.erb</p>
+<h1>Comics</h1>
+
+<div class="row">
+  <% @comics.each do |comic| %>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title"><%= comic.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">by <%= comic.author %></h6>
+          <p class="card-text"><strong>Genre:</strong> <%= comic.genre %></p>
+          <p class="card-text"><strong>User:</strong> <%= comic.user.email %></p>
+          <%= link_to "View", comic, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

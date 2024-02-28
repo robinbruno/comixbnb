@@ -7,6 +7,16 @@
   transition: box-shadow 0.3s ease;
   padding: 20px;
 
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .poster-image {
+      width: 100%;
+      height: auto;
+    }
+  }
 
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

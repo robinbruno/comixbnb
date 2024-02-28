@@ -6,12 +6,12 @@
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  padding: 14px;
+  padding: 12px;
   margin: 6px;
 
   .card-body {
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items: center;
 
     .poster-image {

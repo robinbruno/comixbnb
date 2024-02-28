@@ -23,7 +23,7 @@ Comic.create!(title: "Garfield At Large: His First Book", author: "Jim Davis ", 
 Comic.create(title: "Watchmen", author: "Alan Moore", genre: "Comics, Graphic novel, Novel, Superhero fiction, Fantasy Fiction", published_in: "10/03/1986", user: User.last)
 Comic.create(title: "Dog Man and Cat Kid", author: "Dav Pilkey", genre: "Comics, Graphic novel, Fiction, Humor", published_in: "10/03/2017", user: User.last)
 Comic.create(title: "Asterix and Cleopatra", author: "René Goscinny", genre: "Humor", published_in: "10/03/1965", user: User.last)
-Comic.create(title: "The Blue Lotus", author: "Hergé", genre: "Comics, Graphic novel", published_in: "10/03/1935", user: User.first)
+Comic.create(title: " ", author: "Hergé", genre: "Comics, Graphic novel", published_in: "10/03/1935", user: User.first)
 Comic.create(title: "Persepolis 1: The Story of a Childhood", author: "Marjane Satrapi", genre: "Graphic novel, autobiography", published_in: "10/03/2000", user: User.first)
 puts "#{Comic.count} comics in database"
 

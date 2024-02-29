@@ -1,8 +1,5 @@
 require 'faker'
 
-puts "db Comic is dead"
-Comic.destroy_all
-
 puts "db Booking is dead"
 Booking.destroy_all
 

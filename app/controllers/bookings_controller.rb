@@ -22,6 +22,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status:params[:status])
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -34,6 +37,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params[:booking].permit(:start_date, :end_date)
+    params[:booking].permit(:start_date, :end_date, :status)
   end
 end

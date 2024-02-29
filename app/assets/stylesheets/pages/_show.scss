@@ -14,3 +14,19 @@
   display: flex;
   justify-content: center;
 }
+
+.booking-button {
+  background-color: #B5C0D0;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.booking-button:hover {
+  background-color: #CCD3CA;
+}

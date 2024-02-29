@@ -1,12 +1,7 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: %i[ create new ]
-
   def index
     @bookings = Booking.all
-  end
-
-  def show
   end
 
   def new
@@ -24,9 +19,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
   end
 
@@ -34,11 +26,6 @@ class BookingsController < ApplicationController
   end
 
   private
-
-  def set_booking
-    @booking = Booking.find(params[:id])
-
-  end
 
   def set_comic
     @comic = Comic.find(params[:comic_id])

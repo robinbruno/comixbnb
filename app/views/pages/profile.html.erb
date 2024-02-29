@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+</head>
+<body>
+  <h1>Profile</h1>
+
+  <h2>Email:</h2>
+  <p><%= current_user.email %></p>
+
+  <h2>Reset Password:</h2>
+
+  <h2>First Name:</h2>
+  <p><%= current_user.first_name %></p>
+
+  <h2>Last Name:</h2>
+  <p><%= current_user.last_name %></p>
+
+  <h2>Address:</h2>
+  <p><%= current_user.address %></p>
+
+<h2>Bookings Waiting for Approval:</h2>
+  <% @pending_bookings.each do |booking| %>
+    <p><%= booking.status %></p>
+    <% if booking.pending? %>
+      <%= link_to "Accept", accept_booking_path(booking), method: :post %>
+      <%= link_to "Reject", reject_booking_path(booking), method: :post %>
+    <% end %>
+  <% end %>
+
+  <h2>Bookings Processed:</h2>
+  <% @mybookings.each do |booking| %>
+    <p><%= booking.status %></p>
+  <% end %>
+</body>
+</html>

@@ -8,6 +8,9 @@
     <p class="ids"><strong>Author:</strong> <%= @comic.author %></p>
     <p class="ids"><strong>Genre:</strong> <%= @comic.genre %></p>
     <p class="ids"><strong>Published in:</strong> <%= @comic.published_in %></p>
+    <div class="justify-content-center d-flex">
+              <%= link_to "Booking", new_comic_booking_path(@comic), class: "btn btn-primary" %>
+        </div>
   </div>
 </body>
 </html>

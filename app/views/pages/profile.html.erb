@@ -9,7 +9,7 @@
   <h2>Email:</h2>
   <p><%= current_user.email %></p>
 
-  <h2>Reset Password</h2>
+  <%= button_to "Reset Password", "#", method: :post, class: "dropdown-item", remote: true %>
 
   <h2>First Name:</h2>
   <p><%= current_user.first_name %></p>
@@ -24,12 +24,15 @@
   <% @pending_bookings.each do |booking| %>
     <p><%= booking.status %></p>
       <%= button_to "Accept", booking_path(booking, status: 'Accepted'), method: :patch, data: { confirm: "Are you sure you want to accept thisbooking?" } %>
-      <%= button_to "Reject", booking_path(booking, status: 'Rejected'), method: :patch, data: { confirm: "Are you sure you want to reject thi booking?" } %>
+      <%= link_to "Reject", booking_path(booking, status: 'Rejected'), method: :patch, data: { confirm: "Are you sure you want to reject thi booking?" } %>
   <% end %>
 
   <h2>Bookings Processed:</h2>
   <% @mybookings.each do |booking| %>
     <p><%= booking.status %></p>
   <% end %>
+  <div id="reset-password-message" style="display: none;">
+  A reset password link has been sent to your e-mail address.
+</div>
 </body>
 </html>

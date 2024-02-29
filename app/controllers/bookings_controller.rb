@@ -11,13 +11,15 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @comic = Comic.find(params[:comic_id])
     @booking.comic = @comic
-
-    if @booking.save
-      redirect_to booking_path(@booking)
+    @booking.status = "Pending"
+    if @booking.save!
+      #redirect_to booking_path(@booking)
+      redirect_to profile_path()
 
     else
-      redirect_to boat_path(@comic)
+      redirect_to comic_path(@comic)
     end
   end
 

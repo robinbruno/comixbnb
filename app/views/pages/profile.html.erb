@@ -1,30 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Profile</title>
-</head>
-<body>
-  <h1>Profile</h1>
+<div class="container">
+<h1>Profile</h1>
 
-  <h2>Email:</h2>
-  <p><%= current_user.email %></p>
+  <h2>Email: <%= current_user.email %></h2>
 
   <%= button_to "Reset Password", "#", method: :post, class: "dropdown-item", remote: true %>
 
-  <h2>First Name:</h2>
-  <p><%= current_user.first_name %></p>
+  <h2>First Name: <%=current_user.first_name%></h2>
 
-  <h2>Last Name:</h2>
-  <p><%= current_user.last_name %></p>
+  <h2>Last Name: <%=current_user.last_name %></h2>
 
-  <h2>Address:</h2>
-  <p><%= current_user.address %></p>
+  <h2>Address: <%=current_user.address%></h2>
 
 <h2>Bookings Waiting for Approval:</h2>
   <% @pending_bookings.each do |booking| %>
     <p><%= booking.status %></p>
       <%= button_to "Accept", booking_path(booking, status: 'Accepted'), method: :patch, data: { confirm: "Are you sure you want to accept thisbooking?" } %>
-      <%= link_to "Reject", booking_path(booking, status: 'Rejected'), method: :patch, data: { confirm: "Are you sure you want to reject thi booking?" } %>
+      <%= button_to "Reject", booking_path(booking, status: 'Rejected'), method: :patch, data: { confirm: "Are you sure you want to reject thi booking?" } %>
   <% end %>
 
   <h2>Bookings Processed:</h2>
@@ -34,5 +25,4 @@
   <div id="reset-password-message" style="display: none;">
   A reset password link has been sent to your e-mail address.
 </div>
-</body>
-</html>
+</div class="container">

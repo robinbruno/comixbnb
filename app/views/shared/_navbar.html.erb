@@ -48,17 +48,18 @@
       </div>
     </div>
   </div>
-<div style="display: flex; justify-content: center; align-items: center;">
+<div class="container">
+  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
     <%= simple_form_for :search, method: :get do |f| %>
       <div class="search-bar">
         <div class="flex-container_search d-none" data-toggle-target="togglableElement">
-          <%= f.input :title, label: false, input_html: { placeholder: "Title?" , class: "flex-item" } %>
-          <%= f.input :from, as: :date, label: false, input_html: { placeholder: "From..." , class: "flex-item" } %>
-          <%= f.input :to, as: :date, label: false, input_html: { placeholder: "To..." , class: "flex-item" } %>
-          <%= f.input :pickable, as: :boolean, label: "Pickable?", inline_label: true, class: "flex-item" %>
+          <%= f.input :title, label: false, input_html: { placeholder: "Title?" , class: "flex-item", style: "margin-right: 10px;"} %>
+          <%= f.input :from, as: :date, label: false, input_html: { placeholder: "From..." , class: "flex-item", style: "margin-right: 10px;" } %>
+          <%= f.input :to, as: :date, label: false, input_html: { placeholder: "To..." , class: "flex-item", style: "margin-right: 10px;" } %>
+          <%= f.input :pickable, as: :boolean, label: "Pickable?", inline_label: true, class: "flex-item", style: "margin-right: 10px;" %>
           <%= f.button :submit, "Search", class: "btn btn-outline-secondary flex-item" %>
         </div>
       </div>
     <% end %>
+  </div>
 </div>
-<div>

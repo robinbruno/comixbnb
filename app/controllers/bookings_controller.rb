@@ -12,8 +12,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.comic = @comic
+
     if @booking.save
       redirect_to booking_path(@booking)
+
     else
       redirect_to boat_path(@comic)
     end

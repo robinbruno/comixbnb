@@ -4,6 +4,10 @@ class ComicsController < ApplicationController
 
   def index
     @comics = Comic.all
+    if params[:query].present?
+      sql_subquery = "title ILIKE :query OR author ILIKE :query"
+      @comics = @comics.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show

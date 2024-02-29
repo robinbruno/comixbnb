@@ -8,12 +8,6 @@
       <div  class="btn-group rounded-lg mt-6" role="group" aria-label="Basic browsing toggle button group">
         <input type="genre" class="btn-check rounded-lg" name="btnheader" id="btngenre" autocomplete="off" checked>
         <label data-action="click->toggle#fire" class="btn btn-outline-secondary" for="btngenre">Search a comic</label>
-
-        <%# <input type="series" class="btn-check rounded-lg" name="btnheader" id="btnseries" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btnseries">Series</label>
-
-        <input type="near" class="btn-check rounded-lg" name="btnheader" id="btnnear" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btnnear">Near you</label> %>
       </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +28,7 @@
               <%= image_tag "https://res.cloudinary.com/dlmpwvjpw/image/upload/v1709207349/Firefly_-Design_a_logo_for_the_Comix_Trip_app_merging_pixel_art_and_hand-drawn_illustration_featu_3_lpuhud.jpg", class: "avatar", alt: "dropdown menu" %>
             </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Action", "#", class: "dropdown-item" %>
+                <%= link_to "Profile", path_profile, class: "dropdown-item" %>
                 <%= link_to "Another action", "#", class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
@@ -49,17 +43,16 @@
     </div>
   </div>
 <div class="container">
-  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-    <%= simple_form_for :search, method: :get do |f| %>
-      <div class="search-bar">
-        <div class="flex-container_search d-none" data-toggle-target="togglableElement">
-          <%= f.input :title, label: false, input_html: { placeholder: "Title?" , class: "flex-item", style: "margin-right: 10px;"} %>
-          <%= f.input :from, as: :date, label: false, input_html: { placeholder: "From..." , class: "flex-item", style: "margin-right: 10px;" } %>
-          <%= f.input :to, as: :date, label: false, input_html: { placeholder: "To..." , class: "flex-item", style: "margin-right: 10px;" } %>
-          <%= f.input :pickable, as: :boolean, label: "Pickable?", inline_label: true, class: "flex-item", style: "margin-right: 10px;" %>
-          <%= f.button :submit, "Search", class: "btn btn-outline-secondary flex-item" %>
-        </div>
-      </div>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3 d-none" data-toggle-target="togglableElement">
+      <%= form_with url: comics_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Type a keyword"%>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
+ </div>
 </div>

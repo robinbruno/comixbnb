@@ -27,9 +27,11 @@
               </div>
             </li>
           <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: "nav-link" do %>
+              <i class="fa-solid fa-power-off fa-2x p-3"></i>
+            <% end %>
+          </li>
           <% end %>
         </ul>
       </div>

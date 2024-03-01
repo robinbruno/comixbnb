@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "comics#index"
 
   resources :comics, except: [:index] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :show]
   end
 
   resources :bookings, only: [:update, :destroy]

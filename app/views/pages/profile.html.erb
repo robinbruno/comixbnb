@@ -26,6 +26,7 @@
 </div>
 
 
+
 <div class="container">
 <div class="bookings d-flex">
   <div class="pendings">
@@ -56,25 +57,27 @@
     </div>
     </div>
     <% end %>
-</div>
+  </div>
 <div class="own_bookings">
   <h2><strong>Your bookings:</strong></h2>
-  <% @mybookings.each do |booking| %>
-          <div class="card-product">
-            <div class="card-product-infos">
-              <div class="status_style">
-              <p><%= booking.status %></p>
+    <% @mybookings.each do |booking| %>
+       <div class="card-product">
+         <div class="card-product-infos">
+          <div class="status_style">
+            <p><%= booking.status %></p>
+           </div>
+            <div class="details">
+               <%= booking.comic.title %>
+               <%= booking.user.first_name %>
+             </div>
+             <div class="dates">
+                <p>Start Date: <%= booking.start_date %></p>
+                <p>End Date: <%= booking.end_date %></p>
               </div>
-              <div class="details">
-              <%= booking.comic.title %>
-              <%= booking.user.first_name %>
+              <div class="infos">
+                 <%= link_to "Cancel/Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-dark" %>
               </div>
-              <p>Start Date: <%= booking.start_date %></p>
-              <p>End Date: <%= booking.end_date %></p>
-                  <div class="infos">
-                  <%= link_to "Cancel/Delete", "#", class: "btn btn-dark" %>
             </div>
-                 </div>
     </div>
   <% end %>
   </div>

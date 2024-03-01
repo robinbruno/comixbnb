@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Comic Details</title>
-<body>
+
+  <h1>Comic Details</h1>
   <div class="container">
     <h3 Class="tlt"><%= @comic.title %></h1>
     <p class="ids"><strong>Author:</strong> <%= @comic.author %></p>
     <p class="ids"><strong>Genre:</strong> <%= @comic.genre %></p>
     <p class="ids"><strong>Published in:</strong> <%= @comic.published_in %></p>
-
-
     <br><br>
-
     <div class="text-center">
       <h2>Book the comic</h2>
     </div>
-
     <div class="text-center">
         <%# form_with(model: @booking, local: true) do |form| %>
         <%= simple_form_for([@comic, @booking]) do |f| %>
@@ -24,5 +17,4 @@
         <%= f.submit %>
       <% end %>
     </div>
-</body>
-</html>
+</div>

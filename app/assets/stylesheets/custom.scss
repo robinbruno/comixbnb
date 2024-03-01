@@ -10,11 +10,11 @@
   margin: 6px;
   overflow: hidden;
 
-  // .poster-container {
-  //   width: 150px; /* Set the desired width */
-  //   height: 200px; /* Set the desired height */
-  //   overflow: hidden; /* Ensure that images don't overflow */
-  // }
+  .poster-container {
+    width: 150px;
+    height: 180px;
+    overflow: hidden;
+  }
 
   .poster-image {
     width: 100%;
@@ -68,8 +68,8 @@
     font-weight: bold;
     opacity: 0;
     transition: opacity 0.3s ease;
-    z-index: 1; /* Ensure text is above overlay */
-    pointer-events: none; /* Prevent click events on text */
+    z-index: 1;
+    pointer-events: none;
   }
 
   /* Show overlay and text on hover */

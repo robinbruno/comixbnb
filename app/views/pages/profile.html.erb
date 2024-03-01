@@ -1,27 +1,84 @@
 <div class="container">
-<h1>Profile</h1>
+  <h1><strong>Your profile</strong></h1>
+  <div class="your_profile">
+    <div class="profile_content">
+      <div class="credentials">
+        <h2><strong>First Name:</strong> <%=current_user.first_name%></h2>
+        <h2><strong>Last Name:</strong> <%=current_user.last_name %></h2>
+      </div>
+      <div class="details">
+        <h2><strong>Email:</strong> <%= current_user.email %></h2>
+        <h2><strong>Address:</strong> <%=current_user.address%></h2>
+      </div>
+    </div>
+<div class="add_edit">
+  <div class="add">
+<%= link_to "Add Comic Book", new_comic_path, id: "add-comic-button", class: "btn btn-secondary" %>
+</div>
+<div id="add-comic-form" style="display: none;">
+  <%= render 'comics/form' %>
+  </div>
+  <div class="edit">
+    <%= button_to "Edit", "#", class: "edit-button btn btn-secondary",method: :post, remote: true %>
+    </div>
+    </div>
+  </div>
+</div>
 
-  <h2>Email: <%= current_user.email %></h2>
 
-  <%= button_to "Reset Password", "#", method: :post, class: "dropdown-item", remote: true %>
-
-  <h2>First Name: <%=current_user.first_name%></h2>
-
-  <h2>Last Name: <%=current_user.last_name %></h2>
-
-  <h2>Address: <%=current_user.address%></h2>
-
-<h2>Bookings Waiting for Approval:</h2>
-  <% @pending_bookings.each do |booking| %>
-    <p><%= booking.status %></p>
-      <%= button_to "Accept", booking_path(booking, status: 'Accepted'), method: :patch, data: { confirm: "Are you sure you want to accept thisbooking?" } %>
-      <%= button_to "Reject", booking_path(booking, status: 'Rejected'), method: :patch, data: { confirm: "Are you sure you want to reject thi booking?" } %>
-  <% end %>
-
-  <h2>Bookings Processed:</h2>
+<div class="container">
+<div class="bookings d-flex">
+  <div class="pendings">
+    <h2><strong>Someone wants to read one of you comics:</strong></h2>
+      <% @pending_bookings.each do |booking| %>
+      <div class="container-fluid">
+        <div class="card-product">
+        <img src="https://res.cloudinary.com/dlmpwvjpw/image/upload/v1709223446/incoming_booking_oyzebz.webp" />
+          <div class="card-product-infos d-flex column">
+            <div class="message">
+              <p><%= booking.user.first_name %> would like to book:</p>
+              <%= booking.comic.title %>
+              </div>
+              <div class="dates">
+              <p>Start Date: <%= booking.start_date %></p>
+              <p>End Date: <%= booking.end_date %></p>
+            </div>
+            <div class="infos">
+              <div class="accept">
+              <%= button_to "Accept", booking_path(booking, status: 'Accepted'), method: :patch, data: { confirm: "Are you sure you want to accept thisbooking?" }, class: "btn btn-dark btn-spacing" %>
+              </div>
+              <p></p>
+              <div class="reject">
+              <%= button_to "Reject", booking_path(booking, status: 'Rejected'), method: :patch, data: { confirm: "Are you sure you want to reject thi booking?" }, class: "btn btn-dark btn-spacing" %>
+            </div>
+            </div>
+      </div>
+    </div>
+    </div>
+    <% end %>
+</div>
+<div class="own_bookings">
+  <h2><strong>Your bookings:</strong></h2>
   <% @mybookings.each do |booking| %>
-    <p><%= booking.status %></p>
+          <div class="card-product">
+            <div class="card-product-infos">
+              <div class="status_style">
+              <p><%= booking.status %></p>
+              </div>
+              <div class="details">
+              <%= booking.comic.title %>
+              <%= booking.user.first_name %>
+              </div>
+              <p>Start Date: <%= booking.start_date %></p>
+              <p>End Date: <%= booking.end_date %></p>
+                  <div class="infos">
+                  <%= link_to "Cancel/Delete", "#", class: "btn btn-dark" %>
+            </div>
+                 </div>
+    </div>
   <% end %>
+  </div>
+  </div>
   <div id="reset-password-message" style="display: none;">
   A reset password link has been sent to your e-mail address.
 </div>

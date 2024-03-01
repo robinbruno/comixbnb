@@ -4,20 +4,20 @@
   <% @comics.each do |comic| %>
     <div class="col-md-4 col-sm-8 col-lg-4">
       <div class="card mb-4 custom-card">
+        <h5 class="card-title font-weight-bold text-center"><%= comic.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted font-weight-bold text-center">by <%= comic.author %></h6>
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
-            <h5 class="card-title"><%= comic.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted">by <%= comic.author %></h6>
             <p class="card-text"><strong>Genre:</strong> <%= comic.genre %></p>
-            <p class="card-text"><strong>User:</strong> <%= comic.user.email %></p>
+            <p class="card-text"><strong>Owner:</strong> <%= comic.user.first_name %></p>
           </div>
           <div>
-            <%= image_tag comic.poster, class: "img-fluid poster-image" %>
+          <%= image_tag comic.poster, class: "poster-image" %>
           </div>
         </div>
           <div>
-          <%= link_to "View", comic, class: "btn btn-info" %>
-          </div>
+        <%= link_to "", comic, class: "btn btn-info btn-custom" %>
+         </div>
       </div>
     </div>
   <% end %>

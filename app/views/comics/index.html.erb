@@ -9,7 +9,7 @@
             <h5 class="card-title"><%= comic.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted">by <%= comic.author %></h6>
             <p class="card-text"><strong>Genre:</strong> <%= comic.genre %></p>
-            <p class="card-text"><strong>User:</strong> <%= comic.user.email %></p>
+            <p class="card-text"><strong>Owner:</strong> <%= comic.user.first_name %></p>
           </div>
           <div>
             <%= image_tag comic.poster, class: "img-fluid poster-image" %>

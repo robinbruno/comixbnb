@@ -12,7 +12,15 @@
             <p class="card-text"><strong>Owner:</strong> <%= comic.user.first_name %></p>
           </div>
           <div class="poster-container">
-          <%= image_tag comic.poster, class: "poster-image" %>
+          <% if comic.poster %>
+          <div>
+            <%= image_tag comic.poster, class: "poster-image" %>
+          </div>
+          <% else  %>
+           <div>
+            <img src="https://img.freepik.com/free-vector/colorful-comic-magazine-cover-template_225004-799.jpg" class="poster-image">
+          </div>
+          <% end %>
           </div>
         </div>
           <div>

@@ -1,21 +1,28 @@
-<div class="confirmation-box col-md-4">
-  <div class="listing-price">
-    <div class="form-group">
-      <h4>$<%= @comic.price %></h4>
-
-      <%= simple_form_for [@comic, @booking] do |f| %>
-        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-
-        <h5>Subtotal: <strong>$<%= @comic.price %></strong></h5><br>
-
-        <%= f.submit "Request to book", class: "btn btn-danger form-control" %>
-        <br><br>
-        <p class="text-center" style="color: grey">You won't be charged yet</p>
-        <p class="text-center" style="color: grey">-- Or --</p>
-
-        <button class="btn btn-primary custom-link form-control"><%= link_to "Contact owner", conversations_path %></button>
-      <% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="confirmation-box bg-light rounded p-4 shadow d-flex flex-column justify-content-center align-items-center"> <!-- Centrer le formulaire -->
+        <div class="listing-price">
+          <h4>$<%= @comic.price %></h4>
+        </div>
+        <%= simple_form_for [@comic, @booking] do |f| %>
+          <div class="form-group text-center">
+            <%= f.input :start_date, html5: true, class: "form-control", placeholder: "Start Date" %>
+          </div>
+          <div class="form-group text-center">
+            <%= f.input :end_date, html5: true, class: "form-control", placeholder: "End Date" %>
+          </div>
+          <h5 class="text-center">Subtotal: <strong>$<%= @comic.price %></strong></h5>
+          <div class="form-group text-center">
+            <%= f.submit "Request to book", class: "btn btn-danger" %>
+          </div>
+          <div class="text-center text-muted">
+            <p>You won't be charged yet</p>
+            <p>-- Or --</p>
+            <%= link_to "Contact owner", conversations_path, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

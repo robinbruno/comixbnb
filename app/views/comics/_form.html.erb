@@ -17,8 +17,8 @@
             <%= form.text_field :genre, class: "form-control" %>
           </div>
           <div class="mb-3">
-            <%= form.label :poster, class: "form-label" %>
-            <%= form.text_field :poster, class: "form-control" %>
+            <%= form.label :poster, "Poster URL", class: "form-label" %>
+            <%= form.text_field :poster, class: "form-control", placeholder: "Enter URL" %>
           </div>
           <div class="mb-3 text-center">
             <%= form.submit "Submit", class: "btn btn-outline-secondary" %>

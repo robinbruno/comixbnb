@@ -1,6 +1,14 @@
 <div class="container">
 <h1>Profile</h1>
 
+  <%= link_to "Add Comic Book", new_comic_path, id: "add-comic-button", class: "btn btn-primary" %>
+</div>
+
+<div id="add-comic-form" style="display: none;">
+  <%= render 'comics/form' %>
+
+</div>
+
   <h2>Email: <%= current_user.email %></h2>
 
   <%= button_to "Reset Password", "#", method: :post, class: "dropdown-item", remote: true %>
@@ -23,6 +31,7 @@
     <p><%= booking.status %></p>
   <% end %>
   <div id="reset-password-message" style="display: none;">
+  <div class="text-end">
   A reset password link has been sent to your e-mail address.
 </div>
 </div class="container">

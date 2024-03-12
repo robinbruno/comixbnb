@@ -11,9 +11,15 @@
             <p class="card-text"><strong>Genre:</strong> <%= comic.genre %></p>
             <p class="card-text"><strong>User:</strong> <%= comic.user.email %></p>
           </div>
+          <% if comic.poster %>
           <div>
             <%= image_tag comic.poster, class: "img-fluid poster-image" %>
           </div>
+          <% else  %>
+           <div>
+            <img src="https://img.freepik.com/free-vector/colorful-comic-magazine-cover-template_225004-799.jpg" class="img-fluid poster-image">
+          </div>
+          <% end %>
         </div>
           <div>
           <%= link_to "View", comic, class: "btn btn-info" %>
